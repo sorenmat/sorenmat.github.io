@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on sorenmat.dev</title>
+    <link>https://sorenmat.github.io/posts/</link>
+    <description>Recent content in Posts on sorenmat.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Sep 2020 09:05:20 +0200</lastBuildDate>
+    
+	<atom:link href="https://sorenmat.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes memory request and limits</title>
+      <link>https://sorenmat.github.io/posts/my-first-post/</link>
+      <pubDate>Tue, 08 Sep 2020 09:05:20 +0200</pubDate>
+      
+      <guid>https://sorenmat.github.io/posts/my-first-post/</guid>
+      <description>Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens you first reaction is to increase the memory limit or request&amp;hellip; But hold on&amp;hellip; What does OOM killed actually mean in Kubernetes? There are two main reasons for why this happens.
+  You pod are actually crazy and eats all the memory assigned to it. If this happens it will get OOM killed.</description>
+    </item>
+    
+  </channel>
+</rss>

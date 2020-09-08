@@ -27,26 +27,32 @@
     
     
     <meta property="og:title" content="Kubernetes memory request and limits" />
-<meta property="og:description" content="Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens you first reaction is to increase the memory limit or request&hellip; But hold on&hellip; What does OOM killed actually mean in Kubernetes? There are two main reasons for why this happens.
-  You pod are actually crazy and eats all the memory assigned to it. If this happens it will get OOM killed." />
+<meta property="og:description" content="Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens your first reaction is to increase the memory limit or request&hellip;
+But hold on&hellip;
+What does OOM killed mean in Kubernetes? There are two main reasons why this happens.
+  Your pod is crazy and eats all the memory assigned to it. If this happens it will get OOM killed. You can see this if you go to your monitoring toolkit (Datadog, Grafana, etc." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sorenmat.github.io/posts/my-first-post/" />
 <meta property="article:published_time" content="2020-09-08T09:05:20+02:00" />
 <meta property="article:modified_time" content="2020-09-08T09:05:20+02:00" />
 <meta itemprop="name" content="Kubernetes memory request and limits">
-<meta itemprop="description" content="Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens you first reaction is to increase the memory limit or request&hellip; But hold on&hellip; What does OOM killed actually mean in Kubernetes? There are two main reasons for why this happens.
-  You pod are actually crazy and eats all the memory assigned to it. If this happens it will get OOM killed.">
+<meta itemprop="description" content="Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens your first reaction is to increase the memory limit or request&hellip;
+But hold on&hellip;
+What does OOM killed mean in Kubernetes? There are two main reasons why this happens.
+  Your pod is crazy and eats all the memory assigned to it. If this happens it will get OOM killed. You can see this if you go to your monitoring toolkit (Datadog, Grafana, etc.">
 <meta itemprop="datePublished" content="2020-09-08T09:05:20+02:00" />
 <meta itemprop="dateModified" content="2020-09-08T09:05:20+02:00" />
-<meta itemprop="wordCount" content="224">
+<meta itemprop="wordCount" content="221">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kubernetes memory request and limits"/>
-<meta name="twitter:description" content="Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens you first reaction is to increase the memory limit or request&hellip; But hold on&hellip; What does OOM killed actually mean in Kubernetes? There are two main reasons for why this happens.
-  You pod are actually crazy and eats all the memory assigned to it. If this happens it will get OOM killed."/>
+<meta name="twitter:description" content="Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens your first reaction is to increase the memory limit or request&hellip;
+But hold on&hellip;
+What does OOM killed mean in Kubernetes? There are two main reasons why this happens.
+  Your pod is crazy and eats all the memory assigned to it. If this happens it will get OOM killed. You can see this if you go to your monitoring toolkit (Datadog, Grafana, etc."/>
 
 	
   </head>
@@ -142,17 +148,20 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens you first reaction is to increase the memory limit or request&hellip;
-But hold on&hellip;
-What does OOM killed actually mean in Kubernetes?
-There are two main reasons for why this happens.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Just had an issue with a pod getting OOM killed in Kubernetes. And of cause when that happens your first reaction is to increase the memory limit or request&hellip;</p>
+<p>But hold on&hellip;</p>
+<p>What does OOM killed mean in Kubernetes?
+There are two main reasons why this happens.</p>
 <ol>
 <li>
-<p>You pod are actually crazy and eats all the memory assigned to it. If this happens it will get OOM killed. You can see this if you go to your monitoring toolkit (Datadog, Grafana etc..) and look at the actual usage in the pod.</p>
+<p>Your pod is crazy and eats all the memory assigned to it. If this happens it will get OOM killed. You can see this if you go to your monitoring toolkit (Datadog, Grafana, etc..) and look at the actual usage in the pod.</p>
 </li>
 <li>
-<p>This one is slightly more tricky :)
-It can also happen if the node in the cluster is running out of memory. If you request and limit are different values you are overcommiting in the node, meaning at one point the node might run out of memory. What happens next is that it looks at all the pods where request != limit and picks a random one and OOM kills that one. Even though inside the pod it&rsquo;s actually using less then the requested value. The reason for this is that setting the request != limit is puttting the pod into a Quality of Service class called Burstable. If you want to avoid this, and you most likely will. You should <em>always</em> align the request and limit values for the memory.</p>
+<p>This one is slightly more tricky :)</p>
+<p>It can also happen if the node in the cluster is running out of memory.
+If your memory request and limit are different values you are overcommitting in the node, meaning at one point the node might run out of memory.</p>
+<p>What happens next is that it looks at all the pods where request != limit and picks a random one and OOM kills that one.</p>
+<p>Even though inside the pod it&rsquo;s using less than the requested value. The reason for this is that setting the request != limit is putting the pod into a Quality of Service class called Burstable. If you want to avoid this, and you most likely will. You should <strong>always</strong> align the request and limit values for the memory.</p>
 </li>
 </ol>
 <ul class="pa0">
